@@ -7,27 +7,35 @@
 </head>
 <body ng-controller="BookCtrl">
 <div>
+    <input type="text" placeholder="Search Here" ng-model="searchText"/>
     <nav>
         <ul class="styleNone list">
             <li>
                 <ul class="styleNone listElement header">
-                    <li>Book Id</li>
-                    <li>Title</li>
+                    <li><a href="" ng-click="sortBy('globalbookid')">Book Id</a></li>
+                    <li><a href="" ng-click="sortBy('title')">Title</a></li>
                     <li>Author(s)</li>
                     <li>eBook ISBN10</li>
                     <li>eBook ISBN13</li>
                     <li>Print ISBN10</li>
                     <li>Print ISBN13</li>
-                    <li>Library Supported</li>
+                    <li><a href="" ng-click="sortBy('librarysupported')">Library Supported</a></li>
                     <li>Edition Type</li>
                     <li>Preview Link</li>
                 </ul>
             </li>
-            <li ng-repeat="b in book.books">
+            <li ng-repeat="b in book | orderBy:orderByField:reverse|filter:searchText">
                 <ul class="styleNone listElement">
                     <li>{{b.globalbookid}}</li>
                     <li>{{b.title}}</li>
-                    <li>{{}}</li>
+                    <li>
+                        <ul class="listElement">
+                            <li ng-repeat="a in b.authors">
+                                {{a.firstname}}
+                            </li>
+
+                        </ul>
+                    </li>
                     <li>{{b.ebookisbn10}}</li>
                     <li>{{b.ebookisbn13}}</li>
                     <li>{{b.printisbn10}}</li>
