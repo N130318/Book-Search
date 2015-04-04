@@ -39,13 +39,13 @@ ul {
     padding: 0px;
 }
 
-#box{
+#box {
     margin-top: 2%;
     margin-bottom: 2%;
     margin-left: 40%;
 }
 
-a{
+a {
     text-decoration: none;
 }
 
@@ -55,5 +55,5 @@ input[type="text"] {
 }
 
 ::-webkit-input-placeholder {
-    text-align:center;
+    text-align: center;
 }
