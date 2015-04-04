@@ -14,16 +14,16 @@
         <ul class="styleNone displayFlex list">
             <li>
                 <ul class="styleNone displayFlex listElement header">
-                    <li><a href="" ng-click="sortBy('globalbookid')">Book Id</a></li>
-                    <li><a href="" ng-click="sortBy('title')">Title</a></li>
-                    <li><a href="" ng-click="sortBy('a.firstname')">Author(s)</a></li>
-                    <li><a href="" ng-click="sortBy('ebookisbn10')">eBook ISBN10</a></li>
-                    <li><a href="" ng-click="sortBy('ebookisbn13')">eBook ISBN13</a></li>
-                    <li><a href="" ng-click="sortBy('printisbn10')">Print ISBN10</a></li>
-                    <li><a href="" ng-click="sortBy('printisbn13')">Print ISBN13</a></li>
-                    <li><a href="" ng-click="sortBy('librarysupported')">Library Supported</a></li>
-                    <li><a href="" ng-click="sortBy('editiontype')">Edition Type</a></li>
-                    <li><a href="">Preview Link</a></li>
+                    <li ng-click="sortBy('globalbookid')">Book Id</li>
+                    <li ng-click="sortBy('title')"> Title</li>
+                    <li>Author(s)</li>
+                    <li ng-click="sortBy('ebookisbn10')">eBook ISBN10</li>
+                    <li ng-click="sortBy('ebookisbn13')">eBook ISBN13</li>
+                    <li ng-click="sortBy('printisbn10')">Print ISBN10</li>
+                    <li ng-click="sortBy('printisbn13')">Print ISBN13</li>
+                    <li ng-click="sortBy('librarysupported')">Library Supported</li>
+                    <li ng-click="sortBy('editiontype')">Edition Type</li>
+                    <li>Preview Link</li>
                 </ul>
             </li>
             <li ng-repeat="b in book | orderBy:orderByField:reverse|filter:searchText">
