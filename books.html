@@ -3,35 +3,37 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title>Search Books</title>
-    <link href="./main.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
 </head>
 <body ng-controller="BookCtrl">
 <div>
-    <input type="text" placeholder="Search Here" ng-model="searchText"/>
+    <div id="box">
+        <input type="text" placeholder="Search by author,book id, title etc." ng-model="searchText"/>
+    </div>
     <nav>
-        <ul class="styleNone list">
+        <ul class="styleNone displayFlex list">
             <li>
-                <ul class="styleNone listElement header">
+                <ul class="styleNone displayFlex listElement header">
                     <li><a href="" ng-click="sortBy('globalbookid')">Book Id</a></li>
                     <li><a href="" ng-click="sortBy('title')">Title</a></li>
-                    <li>Author(s)</li>
-                    <li>eBook ISBN10</li>
-                    <li>eBook ISBN13</li>
-                    <li>Print ISBN10</li>
-                    <li>Print ISBN13</li>
+                    <li><a href="" ng-click="sortBy('a.firstname')">Author(s)</a></li>
+                    <li><a href="" ng-click="sortBy('ebookisbn10')">eBook ISBN10</a></li>
+                    <li><a href="" ng-click="sortBy('ebookisbn13')">eBook ISBN13</a></li>
+                    <li><a href="" ng-click="sortBy('printisbn10')">Print ISBN10</a></li>
+                    <li><a href="" ng-click="sortBy('printisbn13')">Print ISBN13</a></li>
                     <li><a href="" ng-click="sortBy('librarysupported')">Library Supported</a></li>
-                    <li>Edition Type</li>
-                    <li>Preview Link</li>
+                    <li><a href="" ng-click="sortBy('editiontype')">Edition Type</a></li>
+                    <li><a href="">Preview Link</a></li>
                 </ul>
             </li>
             <li ng-repeat="b in book | orderBy:orderByField:reverse|filter:searchText">
-                <ul class="styleNone listElement">
+                <ul class="styleNone listElement displayFlex">
                     <li>{{b.globalbookid}}</li>
                     <li>{{b.title}}</li>
                     <li>
-                        <ul class="listElement">
+                        <ul class=" styleNone">
                             <li ng-repeat="a in b.authors">
-                                {{a.firstname}}
+                                {{a.firstname+" "+a.middlename+" "+a.lastname}}
                             </li>
 
                         </ul>
