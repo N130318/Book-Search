@@ -26,7 +26,7 @@
                     <li>Preview Link</li>
                 </ul>
             </li>
-            <li ng-repeat="b in book | orderBy:orderByField:reverse|filter:searchText">
+            <li ng-repeat="b in book | orderBy:sortObject.sortBy:sortObject[sortObject.sortBy]|filter:searchText">
                 <ul class="styleNone listElement displayFlex">
                     <li>{{b.globalbookid}}</li>
                     <li>{{b.title}}</li>

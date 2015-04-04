@@ -1,7 +1,7 @@
 (function () {
     var CONSTANT = {
         HOST: 'http://localhost',
-        PORT: '63342'
+        PORT: '8080'
     };
 
     function expectBooks(expectedBooks, key, bookCount) {
@@ -17,7 +17,7 @@
     }
 
     describe('Book-Search', function () {
-        var PAGE_NAME = "/Book-Search/books.html";
+        var PAGE_NAME = "/books.html";
         beforeEach(function () {
             openBrowser(PAGE_NAME);
         });

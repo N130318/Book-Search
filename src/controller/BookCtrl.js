@@ -2,34 +2,44 @@
  * Created by Namita Malik on 02/04/15.
  */
 (function (ng) {
-    var bookApp = ng.module('bookApp', []);
+    //Defining bookApp module and requiring bookApp.service
+    var bookApp = ng.module('bookApp', ['bookApp.service']);
     bookApp.controller('BookCtrl', ["$scope", "BookService", function ($scope, BookService) {
-        BookService.getBookResults()
+        //Getting book list from the server
+        BookService.getBookList()
             .success(function (response) {
                 $scope.book = response.books;
-                angular.forEach($scope.book,function(value,index){
-                    if($scope.book[index].librarysupported && $scope.book[index].librarysupported === 1){
-                        $scope.book[index].librarysupported = "Yes";
-                    }
-                    else if($scope.book[index].librarysupported === 0){
-                        $scope.book[index].librarysupported = "No"
-                    }
-                    else{
-                        $scope.book[index].librarysupported = "NA";
+                angular.forEach($scope.book, function (value) {
+                    switch (value.librarysupported) {
+                        case 1:
+                            value.librarysupported = "Yes";
+                            break;
+                        case 0:
+                            value.librarysupported = "No";
+                            break;
+                        default:
+                            value.librarysupported = "NA";
                     }
                 });
-                console.log($scope.book[0].authors.firstname);
             })
             .error(function (status) {
                 console.log(status);
             });
-        $scope.reverse = false;
-        $scope.sortBy = function (field) {
-            if ($scope.orderByField == field) {
-                $scope.reverse = !$scope.reverse;
-            }
-            $scope.orderByField = field;
+        //Sorting the books
+        $scope.sortObject = {
+            sortBy: 'globalbookid',
+            globalbookid: false
         };
-
+        $scope.sortBy = function (field) {
+            if (!$scope.sortObject[field]) {
+                $scope.sortObject = {
+                    sortBy: field
+                };
+                $scope.sortObject[field] = true;
+            }
+            else {
+                $scope.sortObject[field] = false;
+            }
+        };
     }]);
 })(angular);
